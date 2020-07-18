@@ -38,7 +38,7 @@ def test_net(net,device):
                 if modal!=opt.modality_filename[-1]:
                     cube_images[0,j,:,:,i]=np.array(misc.imresize(misc.imread(os.path.join(opt.dataroot,modal,cube,bscan)),[BLOCK_SIZE[0], DATA_SIZE[1]], interp='nearest'))
         result =np.zeros((DATA_SIZE[1], DATA_SIZE[2]))
-        featuremap=np.zeros((opt.planar_perception_channels,DATA_SIZE[1], DATA_SIZE[2]))
+        featuremap=np.zeros((opt.plane_perception_channels,DATA_SIZE[1], DATA_SIZE[2]))
         votemap=np.zeros((DATA_SIZE[1], DATA_SIZE[2]))
 
         for i in range(0,DATA_SIZE[1]-BLOCK_SIZE[1]+BLOCK_SIZE[1]//vote_time,BLOCK_SIZE[1]//vote_time):
