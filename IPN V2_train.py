@@ -127,7 +127,7 @@ if __name__ == '__main__':
     if opt.method=='IPN':
         net = model.IPN(in_channels=opt.in_channels, channels=opt.channels, n_classes=opt.n_classes)
     if opt.method=='IPN_V2':
-        net = model.IPN_V2(in_channels=opt.in_channels, channels=opt.channels,plane_perception_channels=opt.plane_perception_channels, n_classes=opt.n_classes,block_size=opt.block_size,plane_perception=opt.plane_perception)
+        net = model.IPN_V2(in_channels=opt.in_channels, channels=opt.channels,plane_perceptron_channels=opt.plane_perceptron_channels, n_classes=opt.n_classes,block_size=opt.block_size,plane_perceptron=opt.plane_perceptron)
     net=torch.nn.DataParallel(net,[0,1]).cuda()
     #summary(net, (2,160,100,100), opt.batch_size)
     #load trained model
