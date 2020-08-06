@@ -42,10 +42,10 @@ if __name__ == '__main__':
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     logging.info(f'Using device {device}')
     #loading network
-    if opt.planar_perception == 'UNet_3Plus':
-        net = model.UNet_3Plus(in_channels=opt.planar_perception_channels, channels=opt.planar_perception_channels, n_classes=opt.n_classes)
-    if opt.planar_perception == 'UNet':
-        net = model.UNet(in_channels=opt.planar_perception_channels, channels=opt.planar_perception_channels, n_classes=opt.n_classes)
+    if opt.plane_perceptron == 'UNet_3Plus':
+        net = model.UNet_3Plus(in_channels=opt.plane_perceptron_channels, channels=opt.plane_perceptron_channels, n_classes=opt.n_classes)
+    if opt.plane_perceptron == 'UNet':
+        net = model.UNet(in_channels=opt.plane_perceptron_channels, channels=opt.plane_perceptron_channels, n_classes=opt.n_classes)
     #load trained model
     restore_path = os.path.join(opt.saveroot, 'checkpoints_V2+', '4800.pth')
     net.load_state_dict(
