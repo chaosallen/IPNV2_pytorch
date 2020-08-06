@@ -38,7 +38,7 @@ def test_net(net,device):
                 if modal!=opt.modality_filename[-1]:
                     cube_images[0,j,:,:,i]=np.array(misc.imresize(misc.imread(os.path.join(opt.dataroot,modal,cube,bscan)),[BLOCK_SIZE[0], DATA_SIZE[1]], interp='nearest'))
         result =np.zeros((DATA_SIZE[1], DATA_SIZE[2]))
-        featuremap=np.zeros((opt.plane_perception_channels,DATA_SIZE[1], DATA_SIZE[2]))
+        featuremap=np.zeros((opt.plane_perceptron_channels,DATA_SIZE[1], DATA_SIZE[2]))
         votemap=np.zeros((DATA_SIZE[1], DATA_SIZE[2]))
 
         for i in range(0,DATA_SIZE[1]-BLOCK_SIZE[1]+BLOCK_SIZE[1]//vote_time,BLOCK_SIZE[1]//vote_time):
@@ -71,8 +71,8 @@ if __name__ == '__main__':
     if opt.method == 'IPN':
         net = model.IPN(in_channels=opt.in_channels, channels=opt.channels, n_classes=opt.n_classes)
     if opt.method == 'IPN_V2':
-        net = model.IPN_V2(in_channels=opt.in_channels, channels=opt.channels,plane_perception_channels=opt.plane_perception_channels, n_classes=opt.n_classes,
-                           block_size=opt.block_size, plane_perception=opt.plane_perception)
+        net = model.IPN_V2(in_channels=opt.in_channels, channels=opt.channels,plane_perceptron_channels=opt.plane_perceptron_channels, n_classes=opt.n_classes,
+                           block_size=opt.block_size, plane_perceptron=opt.plane_perceptron)
 
     #load trained model
     bestmodelpath= os.path.join(opt.saveroot, 'best_model',natsort.natsorted(os.listdir(os.path.join(opt.saveroot, 'best_model')))[-1])
