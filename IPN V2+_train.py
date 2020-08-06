@@ -106,9 +106,9 @@ if __name__ == '__main__':
     logging.info(f'Using device {device}')
     #loading network
     if opt.plane_perceptron == 'UNet_3Plus':
-        net = model.UNet_3Plus(in_channels=opt.planar_perceptron_channels, channels=opt.planar_perceptron_channels, n_classes=opt.n_classes)
+        net = model.UNet_3Plus(in_channels=opt.plane_perceptron_channels, channels=opt.plane_perceptron_channels, n_classes=opt.n_classes)
     if opt.plane_perceptron == 'UNet':
-        net = model.UNet(in_channels=opt.planar_perceptron_channels, channels=opt.planar_perceptron_channels, n_classes=opt.n_classes)
+        net = model.UNet(in_channels=opt.plane_perceptron_channels, channels=opt.plane_perceptron_channels, n_classes=opt.n_classes)
 
     net=torch.nn.DataParallel(net,[0]).cuda()
     #summary(net, (2,160,100,100), opt.batch_size)

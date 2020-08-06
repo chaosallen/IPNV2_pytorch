@@ -47,7 +47,13 @@ if __name__ == '__main__':
     if opt.plane_perceptron == 'UNet':
         net = model.UNet(in_channels=opt.plane_perceptron_channels, channels=opt.plane_perceptron_channels, n_classes=opt.n_classes)
     #load trained model
-    restore_path = os.path.join(opt.saveroot, 'checkpoints_V2+', '4800.pth')
+    bestmodelpath = os.path.join(opt.saveroot, 'best_model_V2+',
+                                 natsort.natsorted(os.listdir(os.path.join(opt.saveroot, 'best_model_V2+')))[-1])
+    restore_path = os.path.join(opt.saveroot, 'best_model_V2+',
+                                natsort.natsorted(os.listdir(os.path.join(opt.saveroot, 'best_model_V2+')))[-1]) + '/' + \
+                   os.listdir(bestmodelpath)[0]
+    print(restore_path)
+    #restore_path = os.path.join(opt.saveroot, 'checkpoints_V2+', '4800.pth')
     net.load_state_dict(
         torch.load(restore_path, map_location=device)
     )

@@ -155,7 +155,7 @@ class IPN_V2(nn.Module):
         self.in_channels = in_channels
         self.channels=channels
         self.n_classes = n_classes
-        self.planar_perceptron_channels=plane_perceptron_channels
+        self.plane_perception_channels=plane_perceptron_channels
         self.input3d = InConv3d(in_channels,channels)
         self.PLM1 = PLM(8,channels)
         self.PLM2 = PLM(5,channels)
