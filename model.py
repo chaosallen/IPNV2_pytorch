@@ -150,21 +150,21 @@ class IPN(nn.Module):
         logits = self.output(feature)
         return logits,feature
 class IPN_V2(nn.Module):
-    def __init__(self, in_channels,channels,plane_perception_channels,n_classes,block_size,plane_perception):
+    def __init__(self, in_channels,channels,plane_perceptron_channels,n_classes,block_size,plane_perceptron):
         super(IPN_V2, self).__init__()
         self.in_channels = in_channels
         self.channels=channels
         self.n_classes = n_classes
-        self.planar_perception_channels=plane_perception_channels
+        self.planar_perceptron_channels=plane_perceptron_channels
         self.input3d = InConv3d(in_channels,channels)
         self.PLM1 = PLM(8,channels)
         self.PLM2 = PLM(5,channels)
         self.PLM3 = PLM(4,channels)
         self.input2d = skip(channels,block_size[0])
-        if plane_perception=='UNet_3Plus':
-            self.pp= UNet_3Plus(channels,plane_perception_channels, n_classes)
-        if plane_perception=='UNet':
-            self.pp= UNet(channels,plane_perception_channels, n_classes)
+        if plane_perceptron=='UNet_3Plus':
+            self.pp= UNet_3Plus(channels,plane_perceptron_channels, n_classes)
+        if plane_perceptron=='UNet':
+            self.pp= UNet(channels,plane_perceptron_channels, n_classes)
 
     def forward(self, x0):
         x0 = self.input3d(x0)
