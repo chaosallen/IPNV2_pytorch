@@ -10,4 +10,4 @@ IPN: https://github.com/chaosallen/IPN_tensorflow.
 IPN-V2: https://github.com/chaosallen/IPNV2_pytorch.
 
 # Network Structure
-![image](IPNV2.jpg)
+![image](./IPNV2.jpg)
