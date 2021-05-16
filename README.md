@@ -1,9 +1,12 @@
 # IPNV2_pytorch
 This is an pytorch implementation of "IPN-V2 and OCTA-500: Methodology and Database for Retinal Image Segmentation". 
 # Dataset
-The dataset OCTA500 is available at: https://ieee-dataport.org/open-access/octa-500
+The dataset OCTA500 is available at: https://ieee-dataport.org/open-access/octa-500.
+
 Use this dataset, you need to preprocess the downloaded labels. Two operations are required：
+
 1）Rotate 90 degrees：To align with 3D data.
+
 2）Change the gray value of the label image to：0-background,1-FAZ,(2-RV，if you need).
 
 # Related Papers:
